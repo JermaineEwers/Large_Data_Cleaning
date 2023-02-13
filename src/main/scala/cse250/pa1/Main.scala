@@ -45,6 +45,7 @@ object Main {
         outputFile.write(installation.toString)
         outputFile.write('\n')
       }
+
     } finally {
       inputFile.close()
       outputFile.close()

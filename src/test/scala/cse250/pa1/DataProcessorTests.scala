@@ -55,6 +55,8 @@ class DataProcessorTests extends AnyFlatSpec {
     assert(result.toString == expectedToString)
   }
 
+
+
   val SECOND_ROW = "01/31/2023,0000534735,,,Albany,Albany,NY,12205,Colonie,Town,36001014001,Residential,Residential/Small Commercial,PON 2112,National Grid,Purchase,12/17/2022,,Pipeline,,No,SunPower,SPR-M425-H-AC [240V],12,Sunpower,SPR-M425-H-AC,12,26555.00,2040.00,0,0,0,0,0,0,0,5.10,5710.00,,No,No,42.7056536,-73.8100987,POINT (-73.8100987 42.7056536)"
   val EXPECTED_SECOND_ROW = Array(
     "01/31/2023",

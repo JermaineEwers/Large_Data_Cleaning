@@ -46,6 +46,7 @@ object Main {
         outputFile.write('\n')
       }
 
+
     } finally {
       inputFile.close()
       outputFile.close()

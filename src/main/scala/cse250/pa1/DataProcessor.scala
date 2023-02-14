@@ -34,7 +34,10 @@ object DataProcessor {
     var y=0
  var i=0
     for (p<-rr){
-      tor.fields += (SolarInstallation.REQUIRED_HEADERS(y)->rowData(p))
+      if (p>=rowData.length && p<44){
+        tor.fields += (SolarInstallation.REQUIRED_HEADERS(y)->"")
+      }else{
+      tor.fields += (SolarInstallation.REQUIRED_HEADERS(y)->rowData(p))}
       y=y+1
     }
    /*while(i<t) {
@@ -53,12 +56,69 @@ object DataProcessor {
     tor
   }
 
-  def computeUniqueCities(dataset: Array[SolarInstallation]): Int = {
-    var t =dataset
-    1
+  /*def bfs[A](graph: Graph[A], startID: Int): Map[Int, Int] = {
+    var explored: Set[Int] = Set(startID)
 
+    var toExplore: mutable.Queue[Int] = new mutable.Queue[Int]()
+    toExplore.enqueue(startID)
+
+    var Mapp: Map[Int, Int] = Map()
+
+    while (toExplore.nonEmpty) {
+      val nodeToExplore = toExplore.dequeue()
+      val check = graph.adjacencyList
+      for (node <- graph.adjacencyList(nodeToExplore)) {
+        if (!explored.contains(node)) {
+          toExplore.enqueue(node)
+          explored = explored + node
+          Mapp = Mapp + (node -> nodeToExplore)
+        }
+      }
+    }
+    Mapp
+  }*/
+
+  def computeUniqueCities(dataset: Array[SolarInstallation]): Int = {
+   /* use deque and queue*/
+
+    var cities: List[String]=List()
+  for (i<-dataset.indices){
+    if(i!=0){
+      cities = cities :+ dataset(i).fields("City")
+    }
+  }
+    /*var numcit:List[String]=List()
+    var counted: Set[String] =Set()
+    var tocount: mutable.Queue[String] = new mutable.Queue[String]()
+    while(tocount.nonEmpty){
+      val cit= tocount.dequeue()
+      for(city<-cities){
+        if(!cities.contains(city)){
+          tocount.enqueue(city)
+          cities= cities:+city
+          numcit=numcit:+city
+        }
+      }
+    }*/
+
+  cities.distinct.length
+  }
+
+  def computeAverageCostForCity(dataset: Array[SolarInstallation], city: String): Double = {
+    var num: Int=0
+    var cost: Double=0.0
+    var cities: List[String] = List()
+    for (i <- dataset.indices) {
+      if (i != 0) {
+        if(dataset(i).fields("City")==city) {
+          num=num+1
+          cost = cost + dataset(i).fields("Project Cost").toDouble
+        }
+      }
+    }
+
+ cost/num
 
   }
 
-  def computeAverageCostForCity(dataset: Array[SolarInstallation], city: String): Double = ???
 }

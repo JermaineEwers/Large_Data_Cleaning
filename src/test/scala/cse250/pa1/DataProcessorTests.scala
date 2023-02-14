@@ -16,6 +16,8 @@ package cse250.pa1
 import cse250.objects.SolarInstallation
 import org.scalatest.flatspec.AnyFlatSpec
 
+import scala.collection.mutable
+
 
 class DataProcessorTests extends AnyFlatSpec {
   behavior of "DataProcessor.splitArrayToRowArray"
@@ -53,6 +55,13 @@ class DataProcessorTests extends AnyFlatSpec {
     assert(result.fields.size == SolarInstallation.REQUIRED_HEADERS.length)
     val expectedToString = EXPECTED_SECOND_ROW_REQUIRED.mkString(",")
     assert(result.toString == expectedToString)
+  }
+
+  it should "test " in {
+    var cities: List[String]=List("Albany","Albany","Albany","Albany","Brooklyn","Bronx","Bronx")
+    cities.toSet
+
+    assert(cities.distinct.length==3)
   }
 
 

@@ -37,9 +37,30 @@ object Main {
        * (do not close inputFile until after you finish reading from lines!)
        */
       val lines = inputFile.getLines()
-
+      var numb:Int=0
       for (line <- lines) {
+      numb+=1
+
+
+      var lin: List[Int]=List()
+        var p:Int=0
+
+        for(i<-line.indices){
+          if(line(i) == ""){
+            lin=lin:+numb
+
+          }
+        }
+       /* var tu:String=""
+        var art:String=""
+        if(p!=0){
+         art= art.concat(lin.toArray.toBuffer.remove(p).toString)
+        tu=tu.concat(art)}*/
+
+
+
         val rowData = DataProcessor.splitArrayToRowArray(line.split(","))
+
         val installation = DataProcessor.rowArrayToSolarInstallation(rowData)
         dataset.append(installation)
         outputFile.write(installation.toString)

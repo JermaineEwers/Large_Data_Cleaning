@@ -14,6 +14,7 @@ package cse250.pa1
 import cse250.objects.SolarInstallation
 
 import scala.collection.mutable
+import scala.collection.mutable.ArrayBuffer
 
 object DataProcessor {
   def splitArrayToRowArray(splitHeaderRow: Array[String]): Array[String] ={
@@ -95,11 +96,12 @@ object DataProcessor {
   def computeUniqueCities(dataset: Array[SolarInstallation]): Int = {
    /* use deque and queue*/
 
-    var cities: List[String]=List()
-  for (i<-dataset.indices){
-    if(i!=0){
-      cities = cities :+ dataset(i).fields("City")
-    }
+    var cities: ArrayBuffer[String]=ArrayBuffer()
+    var ty=dataset.length
+    var i=1
+  while(i<ty){
+      cities += dataset(i).fields("City")
+    i+=1
   }
     /*var numcit:List[String]=List()
     var counted: Set[String] =Set()
@@ -116,6 +118,7 @@ object DataProcessor {
     }*/
 
   cities.distinct.length
+
   }
 
   def computeAverageCostForCity(dataset: Array[SolarInstallation], city: String): Double = {

@@ -17,6 +17,7 @@ import cse250.objects.SolarInstallation
 import org.scalatest.flatspec.AnyFlatSpec
 
 import scala.collection.mutable
+import scala.collection.mutable.ArrayBuffer
 
 
 class DataProcessorTests extends AnyFlatSpec {
@@ -57,12 +58,54 @@ class DataProcessorTests extends AnyFlatSpec {
     assert(result.toString == expectedToString)
   }
 
-  it should "test " in {
-    var cities: List[String]=List("Albany","Albany","Albany","Albany","Brooklyn","Bronx","Bronx")
-    cities.toSet
+  it should "correctly process the fir (2nd row) of file" in {
 
-    assert(cities.distinct.length==3)
+    val sec= "Pipeline,sec  , ,  \"Namaste Solar Electric,Inc.\" "
+    var splitHeaderRow= sec.split(",")
+    var t: Array[String] = Array()
+    var r: List[String] = List()
+    var pp = splitHeaderRow.length
+    var i = 0
+    while (i < splitHeaderRow.length) {
+      if (splitHeaderRow(i).contains("\"")) {
+        r=r:+splitHeaderRow(i).concat(",").concat(" ").concat(splitHeaderRow(i +1))
+        i=i+2
+      }
+      if(i==pp){
+        i
+      }else{
+      r = r :+ splitHeaderRow(i)
+      i+=1}
+
+    }
+
+
+   /* var ty: ArrayBuffer[Char] = ArrayBuffer()
+    for (i <- sec.indices) {
+      ty += sec(i)
+    }
+
+    var y=0
+    var p=0
+    for (i <- sec.indices) {
+      if (ty(i) == '"'.charValue() && y == 0) {
+        y = 1
+      }
+      if (ty(i) == ','.charValue() && y == 1) {
+        p = i
+        ty.remove(p)
+        y = 2
+      }
+      if (ty(i) == '"'.charValue() && y == 2) {
+        y = 0
+      }
+
+    }*/
+   /* println(ty.mkString)*/
+    println(r.mkString)
   }
+
+
 
 
 

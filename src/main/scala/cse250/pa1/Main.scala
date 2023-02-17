@@ -13,9 +13,12 @@ package cse250.pa1
  */
 
 import cse250.objects.SolarInstallation
-import java.io.{ BufferedWriter, FileWriter }
+
+import java.io.{BufferedWriter, FileWriter}
 import scala.io.Source
 import scala.collection.mutable
+import scala.collection.mutable.ArrayBuffer
+import scala.util.control.Breaks.break
 
 object Main {
 
@@ -37,25 +40,55 @@ object Main {
        * (do not close inputFile until after you finish reading from lines!)
        */
       val lines = inputFile.getLines()
-      var numb:Int=0
-      for (line <- lines) {
-      numb+=1
 
+      var numb:Int=0
+      for (line<- lines) {
+    /* numb+=1
+     var ch=line
+        var ty: ArrayBuffer[Char]=ArrayBuffer()
+        for (i<-ch.indices){
+          ty+=ch(i)
+        }
 
       var lin: List[Int]=List()
         var p:Int=0
+        var y:Int=0
+var t=line(2)
+  val k='"'
 
-        for(i<-line.indices){
-          if(line(i) == ""){
-            lin=lin:+numb
-
+    var neww:String=""
+        var tr:String=""
+        for(i<-ch.indices){
+          if(ch(i)=='"'.charValue() && y==0){
+            y=1
           }
-        }
-       /* var tu:String=""
-        var art:String=""
-        if(p!=0){
-         art= art.concat(lin.toArray.toBuffer.remove(p).toString)
-        tu=tu.concat(art)}*/
+          if(ch(i)==','.charValue() && y==1){
+            p=i
+            ty.remove(p)
+            y=2
+          }
+          if (ch(i) == '"'.charValue() && y == 2) {
+            y = 0
+          }
+
+
+        }*/
+
+     /* if(p!=0) {
+        ty.remove(p)
+      }*/
+       /* if(p!=0){
+          ch=ty.mkString
+          }*/
+
+
+
+        /* var tu:String=""
+         var art:String=""
+         if(p!=0){
+          art= art.concat(lin.toArray.toBuffer.remove(p).toString)
+         tu=tu.concat(art)}*/
+
 
 
 

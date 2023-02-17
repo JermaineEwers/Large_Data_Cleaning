@@ -19,10 +19,24 @@ object DataProcessor {
   def splitArrayToRowArray(splitHeaderRow: Array[String]): Array[String] ={
     var t: Array[String]=Array()
     var r: List[String]=List()
-    for(i<-splitHeaderRow.indices){
-    r=r:+splitHeaderRow(i)
+    var pp=splitHeaderRow.length
+    var tt=0
+    var i=0
+    while (i < splitHeaderRow.length) {
+      if (splitHeaderRow(i).contains("\"")) {
+        r = r :+ splitHeaderRow(i).concat(",").concat(" ").concat(splitHeaderRow(i + 1))
+        i = i + 2
+      }
+      if (i == pp) {
+        i
+      } else {
+        r = r :+ splitHeaderRow(i)
+        i += 1
+      }
 
     }
+
+
     t=r.toArray
     t
   }
@@ -112,6 +126,9 @@ object DataProcessor {
       if (i != 0) {
         if(dataset(i).fields("City")==city) {
           num=num+1
+          if(dataset(i).fields("Project Cost").toDouble<=50){ }
+          cost = cost + dataset(i).fields("Total NYSERDA Incentive").toDouble
+        }else{
           cost = cost + dataset(i).fields("Project Cost").toDouble
         }
       }

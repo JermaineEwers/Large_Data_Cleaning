@@ -19,23 +19,32 @@ import scala.collection.mutable.ArrayBuffer
 object DataProcessor {
   def splitArrayToRowArray(splitHeaderRow: Array[String]): Array[String] ={
     var t: Array[String]=Array()
+    var qq: ArrayBuffer[String]=ArrayBuffer()
     var r: List[String]=List()
     var pp=splitHeaderRow.length
     var tt=0
     var i=0
     while (i < splitHeaderRow.length) {
       if (splitHeaderRow(i).contains("\"")) {
-        r = r :+ splitHeaderRow(i).concat(",").concat(" ").concat(splitHeaderRow(i + 1))
+
+
+        var f=(splitHeaderRow(i).concat(",").concat(" ").concat(splitHeaderRow(i + 1))).replaceAll("\"","")
+        r = r :+  f
+
         i = i + 2
       }
       if (i == pp) {
         i
       } else {
         r = r :+ splitHeaderRow(i)
+
         i += 1
       }
 
     }
+
+
+
 
 
     t=r.toArray

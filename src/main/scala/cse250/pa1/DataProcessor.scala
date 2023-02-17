@@ -43,6 +43,14 @@ object DataProcessor {
 
     }
 
+    var up=r.length
+    if(r.length<44){
+      while(up<44){
+        r=r:+""
+        up+=1
+      }
+    }
+
 
 
 

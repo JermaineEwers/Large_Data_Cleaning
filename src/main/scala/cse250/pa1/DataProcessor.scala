@@ -32,6 +32,10 @@ object DataProcessor {
         r = r :+  f
 
         i = i + 2
+      }else if(splitHeaderRow(i).contains("\"") && !splitHeaderRow(i+1).contains("\"")){
+        var s="\""
+        var t = splitHeaderRow(i).replaceAll("\"","")
+        r=r:+ (s.concat(t).concat(s))
       }
       if (i == pp) {
         i

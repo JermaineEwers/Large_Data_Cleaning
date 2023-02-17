@@ -154,6 +154,14 @@ object DataProcessor {
       }
     }
 
+    if(num==0){
+      return 0.0
+    }else{
+      return (cost/num)
+    }
+
+
+
    /* for (i <- dataset.indices) {
       if (i != 0) {
         if(dataset(i).fields("City")==city) {
@@ -164,7 +172,7 @@ object DataProcessor {
       }
     }*/
 
- cost/num
+
 
   }
 

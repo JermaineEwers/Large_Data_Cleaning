@@ -109,7 +109,7 @@ var t=line(2)
     val cities = DataProcessor.computeUniqueCities(dataset.toArray)
     val averageCost = DataProcessor.computeAverageCostForCity(dataset.toArray, "Buffalo")
     println(s"Number of cities: $cities")
-    println(s"Average Cost per project in Buffalo: $$$averageCost")
+    println(s"Average Cost per project in Buffalo: $$$averageCost")/*should be 31023 */
   }
 
 }

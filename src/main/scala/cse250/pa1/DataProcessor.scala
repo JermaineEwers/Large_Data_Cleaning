@@ -147,7 +147,14 @@ object DataProcessor {
     var num: Int=0
     var cost: Double=0.0
     var cities: List[String] = List()
-    for (i <- dataset.indices) {
+    for(d<-dataset){
+      if(d.fields("City")==city && d.fields("Project Cost").toDouble >=0){
+        num+=1
+      cost = cost + d.fields("Project Cost").toDouble
+      }
+    }
+
+   /* for (i <- dataset.indices) {
       if (i != 0) {
         if(dataset(i).fields("City")==city) {
           num=num+1
@@ -155,7 +162,7 @@ object DataProcessor {
           cost = cost + dataset(i).fields("Project Cost").toDouble
         }
       }
-    }
+    }*/
 
  cost/num
 

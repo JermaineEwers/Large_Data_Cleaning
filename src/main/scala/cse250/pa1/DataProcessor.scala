@@ -28,7 +28,7 @@ object DataProcessor {
       if (splitHeaderRow(i).contains("\"")) {
 
 
-        var f=(splitHeaderRow(i).concat(",").concat(" ").concat(splitHeaderRow(i + 1))).replaceAll("\"","")
+        var f=(splitHeaderRow(i).concat(",").concat("").concat(splitHeaderRow(i + 1))).replaceAll("\"","")
         r = r :+  f
 
         i = i + 2

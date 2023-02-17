@@ -126,9 +126,7 @@ object DataProcessor {
       if (i != 0) {
         if(dataset(i).fields("City")==city) {
           num=num+1
-          if(dataset(i).fields("Project Cost").toDouble<=50){ }
-          cost = cost + dataset(i).fields("Total NYSERDA Incentive").toDouble
-        }else{
+
           cost = cost + dataset(i).fields("Project Cost").toDouble
         }
       }

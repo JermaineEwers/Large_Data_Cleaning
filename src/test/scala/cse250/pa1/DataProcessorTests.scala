@@ -58,26 +58,7 @@ class DataProcessorTests extends AnyFlatSpec {
     assert(result.toString == expectedToString)
   }
 
-  it should "correctly process the fir (2nd row) of file" in {
 
-    val sec= "Pipeline,sec  , ,  \"Namaste Solar Electric,Inc.\" "
-    var splitHeaderRow= sec.split(",")
-    var t: Array[String] = Array()
-    var r: List[String] = List()
-    var pp = splitHeaderRow.length
-    var i = 0
-    while (i < splitHeaderRow.length) {
-      if (splitHeaderRow(i).contains("\"")) {
-        r=r:+splitHeaderRow(i).concat(",").concat(" ").concat(splitHeaderRow(i +1))
-        i=i+2
-      }
-      if(i==pp){
-        i
-      }else{
-      r = r :+ splitHeaderRow(i)
-      i+=1}
-
-    }
 
 
    /* var ty: ArrayBuffer[Char] = ArrayBuffer()
@@ -102,8 +83,8 @@ class DataProcessorTests extends AnyFlatSpec {
 
     }*/
    /* println(ty.mkString)*/
-    println(r.mkString)
-  }
+
+
 
 
 

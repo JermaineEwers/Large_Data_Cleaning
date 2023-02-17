@@ -41,7 +41,7 @@ object Main {
        */
       val lines = inputFile.getLines()
 
-      var numb:Int=0
+
       for (line<- lines) {
     /* numb+=1
      var ch=line

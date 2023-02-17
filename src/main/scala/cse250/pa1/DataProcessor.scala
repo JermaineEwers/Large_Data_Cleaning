@@ -25,7 +25,7 @@ object DataProcessor {
     var tt=0
     var i=0
     while (i < splitHeaderRow.length) {
-      if (splitHeaderRow(i).contains("\"")) {
+      if (splitHeaderRow(i).contains("\"") && splitHeaderRow(i+1).contains("\"")  ) {
 
 
         var f=(splitHeaderRow(i).concat(",").concat("").concat(splitHeaderRow(i + 1))).replaceAll("\"","")

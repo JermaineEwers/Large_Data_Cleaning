@@ -36,6 +36,7 @@ object DataProcessor {
         var s="\""
         var t = splitHeaderRow(i).replaceAll("\"","")
         r=r:+ (s.concat(t).concat(s))
+        i+=1
       }
       if (i == pp) {
         i

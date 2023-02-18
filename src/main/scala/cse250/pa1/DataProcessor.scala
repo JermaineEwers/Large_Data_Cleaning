@@ -148,7 +148,7 @@ object DataProcessor {
     var cost: Double=0.0
     var cities: List[String] = List()
     for(d<-dataset){
-      if(d.fields("City")==city && d.fields("Project Cost").toDouble >=0){
+      if(d.fields("City")==city && d.fields("Project Cost").toDouble >0){
         num+=1
       cost = cost + d.fields("Project Cost").toDouble
       }
